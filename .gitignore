@@ -1,0 +1,61 @@
+# Dependências e pastas
+node_modules/
+/.pnp
+.pnp.js
+
+# IDE - VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Expo
+.expo/
+dist/
+web-build/
+
+# Native
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Testes
+/coverage
+
+# Next.js
+/.next/
+/out/
+.vercel
+next-env.d.ts
+
+# Compilações
+/build
+/dist
+/.nyc_output
+
+# Empacotador Metro
+.metro-health-check*
+
+# Depuração de código
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+logs
+*.log
+pnpm-debug.log*
+lerna-debug.log*
+
+# MacOS
+.DS_Store
+*.pem
+
+# Variáveis de ambiente
+.env
+.env*.local
+
+# Typescript
+*.tsbuildinfo
