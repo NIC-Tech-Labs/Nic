@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  basics-store-backend:
+  nic-backend:
     image: bitnami/postgresql
     ports:
       - 5432:5432
