@@ -1,9 +1,9 @@
 import { PrismaService } from 'src/app.service'
 import { UsersService } from 'src/users/users.service'
 
-export function CreateUserFactory () {
+export function UserFactory () {
   const Repository = new PrismaService()
-  const CreateUser = new UsersService(Repository)
+  const Factory = new UsersService(Repository)
 
-  return CreateUser
+  return Factory
 }
