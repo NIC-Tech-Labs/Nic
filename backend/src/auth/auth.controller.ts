@@ -1,18 +1,16 @@
+import { Env } from '@env/index'
 import { InvalidCredentialsError } from '@errors/InvalidCredentials'
 import { Body, Controller, Post, Res } from '@nestjs/common'
+import { JwtService } from '@nestjs/jwt'
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger'
 import { Response } from 'express'
-import { AuthService } from './auth.service'
+import { AuthFactory } from 'factories/auth'
 import { AuthLoginEntity } from './entities/auth.entity'
 import { LoginDTO } from './validations/login.dto'
-import { AuthFactory } from 'factories/auth/auth'
-import { JwtService } from '@nestjs/jwt'
-import { Env } from '@env/index'
 
 @Controller('auth')
 @ApiTags('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) { }
 
   @Post('login')
   @ApiOkResponse({ type: AuthLoginEntity })
