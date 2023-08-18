@@ -12,4 +12,10 @@ export class PrismaUsersRepository implements UsersRepository {
       where: { email }
     })
   }
+
+  async DeleteUser(id: string): Promise<User> {
+    return prisma.user.findUnique({
+      where: { id }
+    })
+  }
 }

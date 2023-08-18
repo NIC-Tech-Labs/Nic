@@ -1,16 +1,19 @@
-import { Body, Controller, Post, Res } from '@nestjs/common'
+import { UserNotFoundError } from '@errors/UserNotFound'
+import { Body, Controller, Delete, Param, Post, Res } from '@nestjs/common'
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger'
 import { EmailExistsError } from 'errors/EmailExists'
 import { Response } from 'express'
-import { CreateUserFactory } from 'factories/users/create'
-import { CreateUserDTO } from './validations/create-user.dto'
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger'
+import { UserFactory } from 'factories/users'
 import { UserEntity } from './entities/user.entity'
+import { UsersService } from './users.service'
+import { CreateUserDTO } from './validations/create-user.dto'
 
-@ApiTags('register')
-@Controller('register')
+@ApiTags('users')
+@Controller('users')
 export class UsersController {
+  constructor (private readonly Service: UsersService) {}
 
-  @Post()
+  @Post('register')
   @ApiOkResponse({ type: UserEntity })
   async CreateUser(@Body() data: CreateUserDTO, @Res() Response: Response) {
     const {
@@ -26,7 +29,7 @@ export class UsersController {
     } = data
 
     try {
-      const Factory = CreateUserFactory()
+      const Factory = UserFactory()
 
       const { User } = await Factory.CreateUser({
         name,
@@ -53,8 +56,31 @@ export class UsersController {
     } catch (error) {
       if (error instanceof EmailExistsError) {
         Response.status(409).json({
-          statusCode: Response.statusCode,
-          message: 'Este e-mail já existe!'
+          Código: Response.statusCode,
+          Mensagem: 'Este e-mail já existe!'
+        })
+      }
+
+      throw error
+    }
+  }
+
+  @Delete('delete/:id')
+  async DeleteUser(@Param('id') userID: string, @Res() Response: Response) {
+    try {
+      const Factory = UserFactory()
+
+      const { User } = await Factory.DeleteUser(userID)
+
+      return Response.status(202).json({
+        User,
+        Código: Response.statusCode,
+        Mensagem: 'Usuário excluído do banco de dados!'
+      })
+    } catch (error) {
+      if (error instanceof UserNotFoundError) {
+        Response.status(404).json({
+          Mensagem: 'Usuário não encontrado!'
         })
       }
 
