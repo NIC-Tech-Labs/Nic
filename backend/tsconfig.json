@@ -1,6 +1,14 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "CommonJS",
+    "baseUrl": "./",
+    "paths": {
+      "@env/*": ["env/*"],
+      "@lib/*": ["lib/*"],
+      "@errors/*": ["errors/*"],
+      "@repositories/*": ["repositories/*"],
+      "@services/*": ["services/*"]
+    },
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
@@ -9,7 +17,6 @@
     "target": "ES2022",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
@@ -17,12 +24,5 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-    "paths": {
-      "@env/*": ["env/*"],
-      "@lib/*": ["lib/*"],
-      "@errors/*": ["errors/*"],
-      "@repositories/*": ["repositories/*"],
-      "@services/*": ["services/*"]
-    }
   }
 }
