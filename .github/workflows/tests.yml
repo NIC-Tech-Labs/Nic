@@ -25,9 +25,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: backend/package-lock.json
 
-      - name: Mudança de diretório
-        run: cd backend
-
       - name: Remoção de módulos do Node
         run: rm -rf node_modules package-lock.json
 
@@ -35,7 +32,7 @@ jobs:
         run: npm cache clean --force
 
       - name: Instalação das dependências
-        run: npm install
+        run: cd backend && npm install
 
       - name: Instanciando o servidor
         run: npm run nest:dev
