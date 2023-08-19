@@ -29,7 +29,6 @@ jobs:
         run: |
             cd backend
             npm ci
-            npm run nest:dev
             npm run test:ci
         env:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
