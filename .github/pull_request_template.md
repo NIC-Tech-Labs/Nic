@@ -31,7 +31,7 @@ Inclua também a motivação e o contexto. Liste quaisquer dependências ou fram
 
 - [ ] Nova funcionalidade ou recurso
 - [ ] Correções de bugs
-- [ ] Mudanças disruptivas
+- [ ] Mudanças sistêmicas
 - [ ] Otimização & performance
 - [ ] Síntaxe do código
 - [ ] Documentação
