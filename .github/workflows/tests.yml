@@ -25,11 +25,12 @@ jobs:
           cache: 'npm'
           cache-dependency-path: backend/package-lock.json
 
-      - run: |
-          cd backend
-          npm ci
-          npm run nest:dev
-          npm test
+      - name: Executando os testes
+        run: |
+            cd backend
+            npm ci
+            npm run nest:dev
+            npm test
         env:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           DATABASE_URL: ${{ secrets.DB_URL }}
