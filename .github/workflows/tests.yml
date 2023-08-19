@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-          cache-dependency-path: /backend/
+          cache-dependency-path: /backend/package-lock.json
 
       - name: Mudança de diretório
         run: cd backend
