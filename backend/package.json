@@ -11,7 +11,7 @@
     "nest:build": "nest build",
     "nest:prod": "node dist/main",
     "lint": "npx eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "vitest -w --dir ./src",
+    "test": "vitest -w",
     "test:cover": "vitest --coverage",
     "test:ui": "vitest --ui"
   },
