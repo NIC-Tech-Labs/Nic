@@ -28,6 +28,12 @@ jobs:
       - name: Mudança de diretório
         run: cd backend
 
+      - name: Remoção de módulos do Node
+        run: rm -rf node_modules package-lock.json
+
+      - name: Limpeza do cache do NPM
+        run: npm cache clean --force
+
       - name: Instalação das dependências
         run: npm install
 
