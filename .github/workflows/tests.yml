@@ -23,12 +23,19 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-          cache-dependency-path: backend/package-lock.json
+          # cache-dependency-path: backend/package-lock.json
 
-      - run: cd backend && ls
-      - run: npm install
-      - run: npm run nest:dev
-      - run: npm test
+      - name: Mudança de diretório
+        run: cd backend
+
+      - name: Instalação das dependências
+        run: npm install
+
+      - name: Instanciando o servidor
+        run: npm run nest:dev
+
+      - name: Executando testes
+        run: npm test
         env:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           DATABASE_URL: ${{ secrets.DB_URL }}
