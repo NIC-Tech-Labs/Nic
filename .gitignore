@@ -1,7 +1,8 @@
 # Dependências e pastas
 node_modules/
-/.pnp
+.pnp
 .pnp.js
+migrations/
 
 # IDE - VSCode
 .vscode/
@@ -15,7 +16,7 @@ node_modules/
 dist/
 web-build/
 
-# Native
+# React Native
 *.orig.*
 *.jks
 *.p8
@@ -24,18 +25,18 @@ web-build/
 *.mobileprovision
 
 # Testes
-/coverage
+coverage
 
 # Next.js
-/.next/
-/out/
+.next/
+out/
 .vercel
 next-env.d.ts
 
 # Compilações
-/build
-/dist
-/.nyc_output
+build
+dist
+.nyc_output
 
 # Empacotador Metro
 .metro-health-check*
