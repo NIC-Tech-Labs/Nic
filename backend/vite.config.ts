@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [ConfigPaths()],
   test: {
     environmentMatchGlobs: [
-      ['.', 'test']
+      ['./src', 'test']
     ]
   }
 })
