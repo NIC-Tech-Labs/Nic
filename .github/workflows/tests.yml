@@ -14,20 +14,6 @@ jobs:
     strategy:
       matrix:
         node_versions: ['16', '18', '>=18']
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node_versions }}
-          cache: 'npm'
-          cache-dependency-path: ${{ env.BACKEND_DIR }}/package-lock.json
-
-      - name: Instalando as dependências
-        run: npm ci
-        working-directory: ${{ env.BACKEND_DIR }}
-    
-  build:
     services:
       postgresql:
         image: bitnami/postgresql
@@ -38,6 +24,19 @@ jobs:
           POSTGRESQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
           POSTGRESQL_DATABASE: ${{ secrets.DB_NAME }}
 
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_versions }}
+          cache: 'npm'
+          cache-dependency-path: ${{ env.BACKEND_DIR }}package-lock.json
+
+      - name: Instalando as dependências
+        run: npm ci
+        working-directory: ${{ env.BACKEND_DIR }}
+    
+  build:
     needs: setup
     runs-on: ubuntu-latest
     steps:
@@ -45,8 +44,7 @@ jobs:
 
       - name: Fazendo migrações do banco de dados
         run: npx prisma migrate dev --name tests
-        working-directory: ${{ env.BACKEND_DIR }}      
-
+        working-directory: ${{ env.BACKEND_DIR }}
 
   tests:
     needs: build
