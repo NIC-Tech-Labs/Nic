@@ -9,7 +9,7 @@ env:
 
 jobs:
   setup:
-    name: Configuração inicial
+    name: Configuração do ambiente Node
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -26,13 +26,13 @@ jobs:
       - name: Instalando as dependências
         run: npm ci
         working-directory: ${{ env.BACKEND_DIR }}
-    
-  build:
+
+  tests:
     needs: setup
     runs-on: ubuntu-latest
 
     services:
-      PostgreSQL:
+      postgresql:
         image: bitnami/postgresql
         ports:
           - 5432:5432
@@ -48,13 +48,6 @@ jobs:
         run: npx prisma migrate dev --name tests
         working-directory: ${{ env.BACKEND_DIR }}
 
-  tests:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-
       - name: Executando testes
-        run: npm ci && npm run test:ci
+        run: npm run test:ci
         working-directory: ${{ env.BACKEND_DIR }}
