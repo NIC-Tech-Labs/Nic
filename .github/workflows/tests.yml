@@ -26,19 +26,26 @@ jobs:
       - name: Instalando as dependências
         run: npm ci
         working-directory: ${{ env.BACKEND_DIR }}
-
-      - name: Fazendo migrações do banco de dados
-        run: npx prisma migrate dev --name tests
-        working-directory: ${{ env.BACKEND_DIR }}
     
   build:
     needs: setup
     runs-on: ubuntu-latest
+
+    services:
+      PostgreSQL:
+        image: bitnami/postgresql
+        ports:
+          - 5432:5432
+        env:
+          POSTGRESQL_USERNAME: ${{ secrets.DB_USER }}
+          POSTGRESQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          POSTGRESQL_DATABASE: ${{ secrets.DB_NAME }}
+
     steps:
       - uses: actions/checkout@v3
 
-      - name: Subindo o banco de dados
-        run: docker-compose up -d
+      - name: Fazendo migrações do banco de dados
+        run: npx prisma migrate dev --name tests
         working-directory: ${{ env.BACKEND_DIR }}
 
   tests:
