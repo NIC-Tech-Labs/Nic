@@ -9,7 +9,7 @@ env:
 
 jobs:
   setup:
-    name: Configuração do ambiente Node
+    name: Config do ambiente
     runs-on: ubuntu-latest
     strategy:
       matrix:
