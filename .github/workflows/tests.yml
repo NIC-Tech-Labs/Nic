@@ -3,13 +3,13 @@ name: (BACKEND) Testes Unitários & E2E
 on: [push, pull_request]
 
 env:
-  BACKEND_DIR: /backend
+  BACKEND_DIR: backend
   JWT_SECRET: ${{ secrets.JWT_SECRET }}
   DATABASE_URL: ${{ secrets.DB_URL }}
 
 jobs:
   setup:
-    name: Execução dos Testes Unitários & E2E
+    name: Configuração inicial
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -21,6 +21,7 @@ jobs:
         with:
           node-version: ${{ matrix.node_versions }}
           cache: 'npm'
+          cache-dependency-path: ${{ env.BACKEND_DIR }}/package-lock.json
 
       - name: Instalando as dependências
         run: npm ci
