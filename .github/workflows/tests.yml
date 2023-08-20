@@ -56,5 +56,5 @@ jobs:
       - uses: actions/setup-node@v3
 
       - name: Executando testes
-        run: npm run test:ci
+        run: npm ci && npm run test:ci
         working-directory: ${{ env.BACKEND_DIR }}
