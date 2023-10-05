@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  nic-backend:
+  postgresql:
     image: bitnami/postgresql
     ports:
       - 5432:5432
@@ -9,3 +9,24 @@ services:
       - POSTGRESQL_USERNAME=nic
       - POSTGRESQL_PASSWORD=123
       - POSTGRESQL_DATABASE=dev
+    networks:
+      pg_bridge:
+        ipv4_address: 172.0.0.10
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 80:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=nic@dev.com
+      - PGADMIN_DEFAULT_PASSWORD=12345678
+    networks:
+      pg_bridge:
+        ipv4_address: 172.0.0.20
+
+networks:
+  pg_bridge:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.0.0.0/24
