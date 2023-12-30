@@ -4,6 +4,10 @@ about: Relatório de mal funcionamento de código
 title: "[BUG]"
 labels: Bugs
 assignees: T0mAlexander
+<<<<<<< HEAD
+=======
+
+>>>>>>> 38dc85e (style: :art: formato do codigo atualizado)
 
 ---
 
