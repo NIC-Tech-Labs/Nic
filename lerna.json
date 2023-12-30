@@ -1,8 +1,8 @@
 {
-  "packages": [
-    "frontend/*",
-    "backend/*"
-  ],
+  "version": "independent",
   "npmClient": "yarn",
-  "version": "independent"
+  "packages": [
+    "backend",
+    "frontend"
+  ]
 }

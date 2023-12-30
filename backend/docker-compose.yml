@@ -1,32 +1,26 @@
 version: "3.8"
+name: nic
 
 services:
   postgresql:
-    image: bitnami/postgresql
+    container_name: postgresql
+    image: bitnami/postgresql:16
     ports:
       - 5432:5432
     environment:
-      - POSTGRESQL_USERNAME=nic
-      - POSTGRESQL_PASSWORD=123
-      - POSTGRESQL_DATABASE=dev
-    networks:
-      pg_bridge:
-        ipv4_address: 172.0.0.10
+      POSTGRESQL_USERNAME: nic
+      POSTGRESQL_PASSWORD: 123
+      POSTGRESQL_DATABASE: dev
+      POSTGRESQL_TIMEZONE: America/Sao_Paulo
+      POSTGRESQL_LOG_TIMEZONE: America/Sao_Paulo
 
   pgadmin:
+    container_name: pgadmin
     image: dpage/pgadmin4
     ports:
       - 80:80
     environment:
-      - PGADMIN_DEFAULT_EMAIL=nic@dev.com
-      - PGADMIN_DEFAULT_PASSWORD=12345678
-    networks:
-      pg_bridge:
-        ipv4_address: 172.0.0.20
+      PGADMIN_DEFAULT_EMAIL: nic@dev.com
+      PGADMIN_DEFAULT_PASSWORD: 12345678
 
-networks:
-  pg_bridge:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.0.0.0/24
+
