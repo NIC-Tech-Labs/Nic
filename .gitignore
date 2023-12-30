@@ -1,8 +1,9 @@
 # Dependências e pastas
 node_modules/
-.pnp
-.pnp.js
+.pnp.*
 migrations/
+.nx/
+.yarn/
 
 # IDE - VSCode
 .vscode/
@@ -10,6 +11,9 @@ migrations/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Arquivos variados
+.gitattributes
 
 # Testes
 coverage
