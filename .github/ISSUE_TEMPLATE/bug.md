@@ -3,7 +3,7 @@ name: Bug
 about: Relatório de mal funcionamento de código
 title: "[BUG]"
 labels: Bugs
-assignees: ''
+assignees: T0mAlexander
 
 ---
 

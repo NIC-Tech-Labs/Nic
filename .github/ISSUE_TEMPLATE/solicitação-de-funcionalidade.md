@@ -10,9 +10,9 @@ assignees: T0mAlexander
 ---
 name: "\U0001F6CE️ Solicitação de funcionalidade"
 about: Sugestão de idéias e lógicas sistêmicas para o aplicativo
-title: "[FUNCIONALIDADE]"
+title: "[FEAT]"
 labels: Funcionalidade(s)
-assignees: T0mAlexander, JoaoeduLS
+assignees: T0mAlexander
 
 ---
 
