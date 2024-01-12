@@ -4,15 +4,141 @@
       "runner": "nx/tasks-runners/default",
       "options": {
         "cacheableOperations": [
-          "bootstrap"
+          "bootstrap",
+          "bootstrap:front",
+          "bootstrap:back",
+          "build:back",
+          "build:front",
+          "backend:dev",
+          "frontend:dev",
+          "nest:dev",
+          "nest:debug",
+          "nest:build",
+          "nest:prod",
+          "lint",
+          "test",
+          "test:cover",
+          "test:ui",
+          "test:ci",
+          "nextjs:dev",
+          "nextjs:build",
+          "nextjs:prod",
+          "nextjs:lint"
         ]
       }
     }
   },
   "targetDefaults": {
+    "backend:dev": {
+      "dependsOn": [
+        "^backend:dev"
+      ]
+    },
+    "frontend:dev": {
+      "dependsOn": [
+        "^frontend:dev"
+      ]
+    },
     "bootstrap": {
       "dependsOn": [
         "^bootstrap"
+      ]
+    },
+    "bootstrap:front": {
+      "dependsOn": [
+        "^bootstrap:front"
+      ]
+    },
+    "bootstrap:back": {
+      "dependsOn": [
+        "^bootstrap:back"
+      ]
+    },
+    "build:back": {
+      "dependsOn": [
+        "^build:back"
+      ],
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    },
+    "build:front": {
+      "dependsOn": [
+        "^build:front"
+      ],
+      "outputs": [
+        "{projectRoot}/.next"
+      ]
+    },
+    "nest:dev": {
+      "dependsOn": [
+        "^nest:dev"
+      ]
+    },
+    "nest:debug": {
+      "dependsOn": [
+        "^nest:debug"
+      ]
+    },
+    "nest:build": {
+      "dependsOn": [
+        "^nest:build"
+      ],
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    },
+    "nest:prod": {
+      "dependsOn": [
+        "^nest:prod"
+      ]
+    },
+    "lint": {
+      "dependsOn": [
+        "^lint"
+      ]
+    },
+    "test": {
+      "dependsOn": [
+        "^test"
+      ]
+    },
+    "test:cover": {
+      "dependsOn": [
+        "^test:cover"
+      ]
+    },
+    "test:ui": {
+      "dependsOn": [
+        "^test:ui"
+      ]
+    },
+    "test:ci": {
+      "dependsOn": [
+        "^test:ci"
+      ]
+    },
+    "nextjs:dev": {
+      "dependsOn": [
+        "^nextjs:dev"
+      ]
+    },
+    "nextjs:build": {
+      "dependsOn": [
+        "^nextjs:build"
+      ],
+      "outputs": [
+        "{projectRoot}/.next"
+      ]
+    },
+    "nextjs:prod": {
+      "dependsOn": [
+        "^nextjs:prod"
+      ]
+    },
+    "nextjs:lint": {
+      "dependsOn": [
+        "^nextjs:lint"
       ]
     }
   }

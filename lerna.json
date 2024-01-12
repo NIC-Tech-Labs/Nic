@@ -1,8 +1,6 @@
 {
   "version": "independent",
   "npmClient": "yarn",
-  "packages": [
-    "backend",
-    "frontend"
-  ]
+  "packages": ["./", "backend", "frontend"],
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }
