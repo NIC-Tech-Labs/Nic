@@ -9,7 +9,7 @@
     "bootstrap": "yarn install",
     "nextjs:dev": "npx next dev",
     "nextjs:build": "npx next build",
-    "nextjs:start": "npx next start",
+    "nextjs:prod": "npx next start",
     "nextjs:lint": "npx next lint"
   },
   "dependencies": {

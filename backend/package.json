@@ -10,7 +10,7 @@
     "nest:dev": "npx nest start",
     "nest:debug": "npx nest start --debug --watch",
     "nest:build": "npx nest build",
-    "nest:prod": "node dist/main",
+    "nest:prod": "node dist/src/main",
     "lint": "npx eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "vitest -w",
     "test:cover": "npx vitest --coverage",

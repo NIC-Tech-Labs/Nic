@@ -22,13 +22,13 @@
     "schema": "./backend/prisma/schema.prisma"
   },
   "scripts": {
-    "bootstrap": "yarn install && npx lerna run bootstrap",
-    "bootstrap:front": "yarn install && npx lerna exec --scope frontend yarn install",
-    "bootstrap:back": "yarn install && npx lerna exec --scope backend yarn install",
-    "build:back": "npx lerna exec --scope backend npx nest build",
-    "backend:dev": "npx lerna exec --scope backend npx nest start",
-    "build:front": "npx lerna exec --scope frontend npx next build",
-    "frontend:dev": "npx lerna exec --scope frontend -- npx next dev"
+    "bootstrap": "yarn install && lerna run bootstrap",
+    "bootstrap:front": "yarn install && lerna exec --scope frontend yarn install",
+    "bootstrap:back": "yarn install && lerna exec --scope backend yarn install",
+    "build:back": "lerna run nest:build --scope=backend",
+    "build:front": "lerna run nextjs:build --scope=frontend",
+    "backend:dev": "docker compose -f backend/docker-compose.yml up postgresql -d && lerna run nest:dev --scope=backend",
+    "frontend:dev": "lerna run nextjs:dev --scope=frontend"
   },
   "devDependencies": {
     "lerna": "^8.0.1"
