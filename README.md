@@ -2,7 +2,7 @@
 
 ### Requisitos obrigatórios
 
-- [**Lerna**](https://lerna.jslerna success run No packages found with the lifecycle script.org/) na versão **8.0.1**
+- [**Lerna**](https://lerna.js.org) na versão **8.0.1**
 - [**Node**](https://nodejs.org/en) na versão **20.10.0**
 - [**Yarn**](https://classic.yarnpkg.com/en/docs) na versão **1.22.21**
 
